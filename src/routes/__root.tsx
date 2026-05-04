@@ -32,11 +32,15 @@ export const Route = createRootRoute({
       { title: "Velvet Strands — Luxury Hair Salon in Lagos" },
       { name: "description", content: "Premium hair salon in Victoria Island, Lagos. Braiding, locs, silk press, color, wigs and scalp treatments crafted for the modern Nigerian woman." },
       { name: "author", content: "Velvet Strands" },
-      { property: "og:title", content: "Velvet Strands — Where Every Strand Tells a Story" },
-      { property: "og:description", content: "Lagos' premier luxury hair salon. Editorial styling, expert braiding and bespoke care in Victoria Island." },
+      { property: "og:title", content: "Velvet Strands — Luxury Hair Salon in Lagos" },
+      { property: "og:description", content: "Premium hair salon in Victoria Island, Lagos. Braiding, locs, silk press, color, wigs and scalp treatments crafted for the modern Nigerian woman." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Velvet Strands — Luxury Hair Salon in Lagos" },
+      { name: "twitter:description", content: "Premium hair salon in Victoria Island, Lagos. Braiding, locs, silk press, color, wigs and scalp treatments crafted for the modern Nigerian woman." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/db17e408-1490-4c40-815e-594200aee6d4" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/db17e408-1490-4c40-815e-594200aee6d4" },
     ],
     links: [
       {
