@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -19,6 +20,12 @@
  */
 
 @theme inline {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --color-plum: var(--plum);
+  --color-accent-purple: var(--accent-purple);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,26 +69,34 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 0.25rem;
+  /* Brand */
+  --plum: oklch(0.18 0.05 340);            /* #1A0A1E deep plum */
+  --plum-deep: oklch(0.13 0.04 340);
+  --gold: oklch(0.78 0.13 85);              /* #C9A84C gold */
+  --gold-soft: oklch(0.86 0.09 85);
+  --cream: oklch(0.96 0.015 80);            /* #F5EFE6 cream */
+  --accent-purple: oklch(0.40 0.10 330);    /* #6B2D6B */
+
+  --background: var(--plum);
+  --foreground: var(--cream);
+  --card: oklch(0.22 0.05 335);
+  --card-foreground: var(--cream);
+  --popover: var(--plum);
+  --popover-foreground: var(--cream);
+  --primary: var(--gold);
+  --primary-foreground: var(--plum);
+  --secondary: var(--accent-purple);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.25 0.04 335);
+  --muted-foreground: oklch(0.78 0.02 80);
+  --accent: var(--accent-purple);
+  --accent-foreground: var(--cream);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.30 0.04 335);
+  --input: oklch(0.30 0.04 335);
+  --ring: var(--gold);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +155,53 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
   }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .text-gold { color: var(--gold); }
+  .bg-plum { background-color: var(--plum); }
+  .bg-plum-deep { background-color: var(--plum-deep); }
+  .gradient-hero {
+    background: linear-gradient(135deg, oklch(0.13 0.04 340) 0%, oklch(0.22 0.07 335) 60%, oklch(0.30 0.09 330) 100%);
+  }
+  .gradient-gold {
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-luxe {
+    box-shadow: 0 25px 60px -20px oklch(0 0 0 / 0.6), 0 0 0 1px oklch(0.78 0.13 85 / 0.1);
+  }
+  .glow-gold {
+    box-shadow: 0 0 40px -10px oklch(0.78 0.13 85 / 0.5);
+  }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.in-view {
+  animation: reveal-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
